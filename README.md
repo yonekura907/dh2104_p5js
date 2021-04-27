@@ -8,12 +8,13 @@
 * [図形](docs/02_shape.md)
 * [カラー](docs/03_color.md)
 * [変数](docs/04_var.md)
+* [計算](docs/05_math.md)
+* [条件分岐](docs/06_if.md)
+* [インタラクション](docs/07_interaction.md)
+
 
 <!--
-* [ランダムとノイズ](docs/06_randomnoise.md)
-* [計算](docs/07_math.md)
-* [条件分岐](docs/08_if.md)
-* [インタラクション](docs/09_interaction.md)
+* [ランダムとノイズ](docs/08_randomnoise.md)
 * [座標変換](docs/10_transform.md)
 * [関数](docs/11_function.md)
 * [for](docs/12_for.md)
