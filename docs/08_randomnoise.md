@@ -28,10 +28,10 @@ random(50,200);
 function setup() {
     createCanvas(500,500);
     background(255);
+    noStroke();
 }
 
 function draw() {
-    noStroke();
     fill(random(0,255),random(0,255),random(0,255),100); // 塗りがランダム
     circle(random(0,500),random(0,500),100); // 円の座標をランダムにして描く
 }
@@ -91,7 +91,7 @@ function draw() {
 パーリンノイズの生成に使う。0.0 から1.0 の間の数値（float）を返す。
 
 ```
-noise(x);
+noise(time);
 
 ```
 
@@ -99,29 +99,59 @@ noise(x);
 &nbsp;
 &nbsp;
 
-#### サンプルコード
 
-
+#### サンプルコード1
 ```
-float x;
-float noiseNum;
+let time = 3; //時間
 
-void setup(){
-  size(800,800);
-  background(255);
-  x = 0;
-  noiseNum = 0;
+function setup() {
+  createCanvas(400, 400);
 }
 
-void draw(){
-  background(255);
-  fill(0,255,255);
-  noStroke();
-  // y座標にノイズ乱数（100掛けたもの）を加える
-  float y = noise(noiseNum)*100 + 400;
-  noiseNum += 0.1;// ノイズ
-  ellipse(x,y,100,100);
-  x++; // 横移動
-  println(y);
+function draw(){
+	//ノイズ関数から出力された値 
+   let n = noise(time);
+   print(n);
 }
+
 ```
+
+![](img/noise_print1.png)
+
+出力結果は同じ値になる
+
+
+
+&nbsp;
+&nbsp;
+
+
+#### サンプルコード2
+```
+let time = 3; //時間
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw(){
+   time += 0.01; //時間の値をインクリメント
+   //ノイズ関数から出力された値 
+   let n = noise(time);
+   print(n);
+}
+
+```
+
+![](img/noise_print1.png)
+
+出力結果が変動していく
+
+&nbsp;
+&nbsp;
+
+#### サンプルコード3
+
+
+&nbsp;
+&nbsp;

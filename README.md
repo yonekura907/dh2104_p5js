@@ -11,11 +11,10 @@
 * [計算](docs/05_math.md)
 * [条件分岐](docs/06_if.md)
 * [インタラクション](docs/07_interaction.md)
-
-
-<!--
 * [ランダムとノイズ](docs/08_randomnoise.md)
 * [座標変換](docs/10_transform.md)
+
+<!--
 * [関数](docs/11_function.md)
 * [for](docs/12_for.md)
 * [配列](docs/13_array.md)

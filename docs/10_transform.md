@@ -3,9 +3,11 @@
 ## 原点の移動　
 ### translate();
 
+初期値では左上がX座標`0` / Y座標`0`で起点となるが、`translate`を使うことで起点を移動することができる
+
 
 ```
-size(500, 500);
+createCanvas(500, 500);
 background(0);
 noStroke();
 fill(255, 0, 0);
@@ -27,7 +29,7 @@ rect(0, 0, 100, 100);
 基点で回転する
 
 ```
-size(512, 512);
+createCanvas(512, 512);
 background(0);
 
 noStroke();
@@ -46,7 +48,7 @@ rect(0, 0, 100, 100);
 translateで基点を真ん中に移動してから回転する
 
 ```
-size(512, 512);
+createCanvas(512, 512);
 background(0);
 noStroke();
 fill(255, 0, 0);
@@ -61,13 +63,13 @@ rect(-50, -50, 100, 100);
 ### アニメーション
 
 ```
-int angle = 0;
+let angle = 0;
 
-void setup() {
-    size(512, 512);
+function setup() {
+    createCanvas(512, 512);
 }
 
-void draw() {
+function draw() {
     background(0);
     noStroke();
     fill(255, 0, 0);
@@ -90,26 +92,26 @@ void draw() {
 
 ## 座標保存
 
-### pushMatrix 
+### push 
 
 座標の保存
 
-### popMatrix
+### pop
 
 座標を元に戻す
 
 
 ```
-size(512, 512);
+createCanvas(512, 512);
 background(0);
 
 noStroke();
 fill(255, 0, 0);
 
-pushMatrix(); // 座標保存
+pus(); // 座標保存
 translate(width/2,height/2); // 座標移動
 rect(-50, -50, 100, 100);
-popMatrix(); // 座標を戻す
+pop(); // 座標を戻す
 
 // これは影響を受けない
 rect(0,0,100,100); 
@@ -126,13 +128,13 @@ rect(0,0,100,100);
 
 ```
 // 回転の角度
-int angle = 0;
+let angle = 0;
 
-void setup() {
-    size(500, 500);
+function setup() {
+    createCanvas(500, 500);
 }
 
-void draw() {
+function draw() {
     background(0);
     noStroke();
     
@@ -141,14 +143,13 @@ void draw() {
     rectMode(CENTER);
     rect(width/2, height/2, 200, 200);
 
-    
-    pushMatrix(); // 座標保存
+    push(); // 座標保存
     // 赤の四角形
     fill(255, 0, 0);
     translate(width/2, height/2);
     rotate(radians(angle));
     rect(0, 0, 100, 100);
-    popMatrix(); // 座標を元に戻す
+    pop(); // 座標を元に戻す
     
     // 緑の四角形
     fill(0, 255, 0);
