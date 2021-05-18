@@ -108,7 +108,7 @@ background(0);
 noStroke();
 fill(255, 0, 0);
 
-pus(); // 座標保存
+push(); // 座標保存
 translate(width/2,height/2); // 座標移動
 rect(-50, -50, 100, 100);
 pop(); // 座標を戻す

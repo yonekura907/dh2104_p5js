@@ -1,29 +1,31 @@
 # 関数 function
 
 関数（かんすう）とはプログラムの中で使う命令をひとまとめにして、名前をつけておく仕組みのことです。関数を作ることでプログラムを機能別のブロックに分けたり、 名前を呼び出して何度も使い回すことができます。
+
 &nbsp;
 &nbsp;
 
 
-### 関数の記法
-
-##### 引数無し、戻り値無し
+## 関数の記法（引数無し、戻り値無し）
 
 命令をひとまとまりにし、名前を呼び出すことで実行される
 
 ```
-型　関数名(){
+function 関数名(){
 	〜文〜
 }
 
 ```
 
 ```
-void setup(){
-  size(500,500);
-  background(255);
-  // 関数の実行 これを書かないと実行されない
-  makeRobot();
+function setup(){
+  createCanvas(500,500);
+}
+
+function draw(){
+   background(255);
+   // 関数の実行 これを書かないと実行されない
+   makeRobot();
 }
 
 // 関数の作成 ここが命令をまとめている
@@ -43,28 +45,31 @@ void makeRobot(){
 ![image](img/sketch_func01.png)
 
 &nbsp;
+&nbsp;
 
-##### 引数有り、戻り値無し
+## 関数の記法（引数有り、戻り値無し）
 
 命令に引数（ひきすう）と呼ばれる値を渡すと、値を元に実行される
 
 ```
-型　関数名(型　引数){
+function 関数名(引数){
 	〜文〜
 }
 
 ```
 
 ```
-void setup(){
-  size(500,500);
-  background(255);
-  // 関数の実行 これを書かないと実行されない
-  makeRobot(250,250);
+function setup(){
+  createCanvas(500,500);
+}
+function draw(){
+   background(255);
+   // 関数の実行 これを書かないと実行されない
+   makeRobot(250,250);
 }
 
 // 関数の作成 ここが命令をまとめている 
-void makeRobot(int x, int y){
+function makeRobot(x, y){
   // 輪郭
   noStroke();
   fill(200);
@@ -78,27 +83,31 @@ void makeRobot(int x, int y){
 ```
 
 &nbsp;
+&nbsp;
 
-##### 引数有り、戻り値有り
+## 関数の記法（ 引数有り、戻り値有り）
 
 関数内で「retun 変数」と記述すると、変数の値を返してくれる
 
 ```
-型　関数名(型　引数){
+function　関数名(引数){
 	〜文〜
 	return 変数
 }
 
 ```
 ```
-void setup(){
-  size(500,500);
-  background(255);
-  makeRobot(250,250);
+function setup(){
+  createCanvas(500,500);
+}
+function draw(){
+   background(255);
+   // 関数の実行 これを書かないと実行されない
+   makeRobot(250,250);
 }
 
 // 関数の作成 ここが命令をまとめている 
-void makeRobot(int x, int y){
+function makeRobot(x, y){
   // 輪郭
   noStroke();
   fill(randomColor(0,50));
@@ -110,11 +119,11 @@ void makeRobot(int x, int y){
 }
 
 //ランダムな色を返す関数
-color randomColor(int hueA, int hueB){
+function randomColor(hueA, hueB){
   // カラーモードをHSB（色相・彩度・明度）
   colorMode(HSB, 360, 100, 100);
   // 変数cにランダムな色相を保存
-  color c = color(random(hueA,hueB),100,100);
+  let c = color(random(hueA,hueB),100,100);
   // cの値を返す
   return c;
 }
