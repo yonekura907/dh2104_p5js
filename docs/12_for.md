@@ -2,7 +2,7 @@
 
 ## for文
 
-反復作業を正確にすばやく実行する
+反復作業を即時に実行する
 
 
 
@@ -15,31 +15,51 @@ for (初期化; 条件; 更新 ){
 
 ```
 
+
+```
+for (let i = 0; i < 100; i++ ){
+	//0から99まで1ずつ
+	print(i);
+}
+
+```
+
 &nbsp;
 
 
 ### for文のサンプルコード
 
 ```
-void setup(){
-  size(200,200);
-  background(255);
-  // 初期値-20、220未満まで、10ずつ増える
-  for(int i = -20; i < 220; i += 10){
-    // 変数iがラインの高さに代入される
-    line(0, i, 200, i + 20);
+function setup() {
+  createCanvas(600, 600);
+  background(0);
+  noFill();
+  colorMode(HSB, 360, 100, 100);
+  for (let i = 0; i < 200; i++) {
+    stroke(random(200, 300), 100, 100);
+    line(
+      random(0, width),
+      random(0, height),
+      random(0, width),
+      random(0, height)
+    );
   }
 }
+
+function draw() {}
+
 ```
 ![image](img/for_line01.png)
 
 &nbsp;
+&nbsp;
 
+<!--
 ### for文の組み合わせ
 
 ```
-void setup(){
-  size(200,200);
+function setup(){
+  createCanvas(200,200);
   background(255);
   stroke(0);
   
@@ -56,77 +76,86 @@ void setup(){
 
 ![image](img/for_line02.png)
 &nbsp;
-
+-->
 
 
 ### for文を使ってグラーデーションを表現
 
 ```
-void setup(){
-	size(200,200);
-	background(255);
-	colorMode(HSB,360,100,100);
-	noStroke();
-	// 初期値0、10未満まで、1ずつ増える
-	for(int i=0; i<10; i++){
-	  fill(i*10, 100, 100);
-	  rect(i*20+5, width/2, 10, 10);
-	}
+function setup() {
+  createCanvas(720, 720);
+  background(0);
+  noStroke();
+  colorMode(HSB, 360, 100, 100);
+  for (let x = 0; x < 36; x++) {
+    //変数xは0から36まで1ずつ増える
+    fill(x*10, 100, 100);
+    rect(x * 20, height / 2, 20, 20);
+  }
 }
+
+function draw() {}
+
 ```
 
-![image](img/for01.png)
+![image](img/for_gradient1.png)
 
+&nbsp;
 &nbsp;
 
 ### forとifの組み合わせ
 
 
 ```
-void setup(){
-  size(200,200);
-  background(255);
-  colorMode(HSB,360,100,100);
+function setup() {
+  createCanvas(720, 720);
+  background(0);
   noStroke();
-  // 初期値0、10未満まで、1ずつ増える
-  for(int i=0; i<10; i++){
-    fill(10, 100, 100);
-    if(i % 2 == 0){
-      // 変数iを2で割った余りが0なら
+  colorMode(HSB, 360, 100, 100);
+  for (let x = 0; x < 36; x++) {
+    //変数xは0から36まで1ずつ増える
+    if (x % 2 == 0) {
       fill(190, 100, 100);
     } else {
       fill(10, 100, 100);
     }
-    rect(i*20+5,width/2,10,10);
+    rect(x * 20, height / 2, 20, 20);
   }
 }
-```
-![image](img/for03.png)
 
+function draw() {}
+```
+![image](img/for_if.png)
+
+&nbsp;
 &nbsp;
 
 ### forの入れ子
 
 
 ```
-void setup(){
-	size(200,200);
-	background(255);
-	colorMode(HSB,360,100,100);
-	noStroke();
-	// 初期値0、10未満まで、1ずつ増える
-	for(int y=0; y < 10; y++){
-	  // 初期値0、10未満まで、1ずつ増えるs
-	  for(int x=0; x < 10; x++){
-	    fill(x*10, 10+ y*10, 100);
-	    rect(x*20+5,y*20+5,10,10);
-	  }
-	}
+function setup() {
+  createCanvas(720, 720);
+  background(0);
+  noStroke();
+  colorMode(HSB, 360, 100, 100);
+  for (let y = 0; y < 36; y++) {
+    for (let x = 0; x < 36; x++) {
+      //0から36の値を100から0に置き換える
+      let sat = map(y,0,36,100,0);
+      fill(x * 10, sat, 100);
+      rect(x * 20, y * 20, 20, 20);
+      
+      print(sat);
+    }
+  }
 }
+
+function draw() {}
 ```
 
 
-![image](img/for02.png)
+![image](img/for_gradient2.png)
 
 &nbsp;
 &nbsp;

@@ -20,6 +20,7 @@ function 関数名(){
 ```
 function setup(){
   createCanvas(500,500);
+  rectMode(CENTER);
 }
 
 function draw(){
@@ -29,11 +30,10 @@ function draw(){
 }
 
 // 関数の作成 ここが命令をまとめている
-void makeRobot(){
+function makeRobot(){
   // 輪郭
   noStroke();
   fill(200);
-  rectMode(CENTER);
   rect(250, 250,200,200);
   fill(0,255,0);
   ellipse(200,250,50,50);

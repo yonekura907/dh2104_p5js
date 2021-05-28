@@ -15,11 +15,11 @@
 * [座標変換](docs/10_transform.md)
 * [三角関数](docs/09_sincos.md)
 * [関数](docs/11_function.md)
-
+* [for](docs/12_for.md)
 
 <!--
 
-* [for](docs/12_for.md)
+
 * [配列](docs/13_array.md)
 * [画像](docs/14_image.md)
 * [3D](docs/00_3d.md)
