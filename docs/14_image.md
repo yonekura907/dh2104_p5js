@@ -1,35 +1,73 @@
 
 # 画像
 
-1. sketchフォルダ内に「data」フォルダを作り画像ファイルを入れる。
-2. PImage変数を作成
-3. loadImage()で画像データを読み込み
-4. image()で表示する
+
+
+## Image
+
+### preload
+
+画像の先読み。setupよりも先に画像を読み込む
+
+```
+function preload() {
+  // preload() runs once
+  img = loadImage('aDefense.jpg');
+}
+
+```
+&nbsp;
+&nbsp;
+
+
+### image()
+画像の表示
+
+`image(変数, x, y)`
+
+`image(変数, x, y, width, height)`
+
+&nbsp;
+&nbsp;
+
+## サンプルコード
+
+
+1. OpenProcessingにログイン（初回はサインイン）
+2. `Create a Sketch`から新規プロジェクトを作成
+3. 右上の設定から`Files`を選び画像をドロップする
+
+![](img/img01.png)
 
 
 ```
-// 画像を読み込む変数
-PImage littleBits;
+let img; //画像を保存する変数
+let x; //X座標
+let y; //Y座標
 
-void setup(){
-  size(500,500);
-  background(255);
-  colorMode(HSB,360,100,100);
-  
-  // 変数に画像ファイルをロードする
-  littleBits = loadImage("littleBits.png");
-  
-  // 画像の基点をセンターに
-  imageMode(CENTER);
-  // 赤く塗る
-  tint(0,100,100); 
-  // 画像を表示する
-  image(littleBits,width/2,height/2,350,150);
-  filter(BLUR,3); // ぼかしフィルター
- 
+function preload() {
+	// setupよりも先に画像を読み込む
+	img = loadImage('dino.png');
 }
 
 
-```
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+	imageMode(CENTER); //画像の基準値を中央に
+	x = width / 2;
+	y = height / 2;
 
-![image](img/image01.png)
+}
+
+function draw() {
+	background(0);
+	image(img, x, y); //イメージの読み込み
+	x = x + 2;
+	
+	if(x > width){
+		x = 0;
+	}
+}
+
+```
+![](img/img02.png)

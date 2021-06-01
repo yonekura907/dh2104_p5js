@@ -9,7 +9,7 @@
  ![](img/synth_freq_amp.png)
 
 
-
+&nbsp;
 &nbsp;
 
  

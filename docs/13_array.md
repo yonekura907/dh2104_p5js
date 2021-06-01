@@ -1,8 +1,12 @@
 # 配列
+
+変数はひとつの宣言に対して、ひとつの値しか保存できないが、変数を配列化することで複数の値を保持することができる。
+また番号（0はじまり）で値を管理することができる。
+
 ### 配列宣言
 
 ```
-配列データ型[] 配列の名前 = new 配列データ型[配列の数];
+let 変数名前 = [];
 ```
 
 
@@ -13,15 +17,15 @@
 
 ```
 // 配列の作成
-int[] myArr = new int[5];
+let myArr = [];
 // 配列myArrにデータを保存
-myArr[0] = 10;
-myArr[1] = 20;
-myArr[2] = 30;
-myArr[3] = 15;
-myArr[4] = 5;
+myArr[0] = 100;
+myArr[1] = 200;
+myArr[2] = 300;
+myArr[3] = 400;
+myArr[4] = 500;
 
-println(myArr[1]);
+print(myArr[1]);
 // コンソールの結果は20
 ```
 
@@ -29,24 +33,79 @@ println(myArr[1]);
 &nbsp;
 &nbsp;
 
+
+
+```
+// 配列の作成
+let myArr = [];
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // 配列myArrにデータを保存
+  myArr[0] = 100;
+  myArr[1] = 200;
+  myArr[2] = 300;
+  myArr[3] = 400;
+  myArr[4] = 500;
+  print(myArr[1]);
+}
+
+function draw() {
+  background(220);
+  noStroke();
+  fill(0,255,255);
+  circle(width/2, height/2, myArr[3]);
+}
+```
+![](img/array01.png)
+
+
+&nbsp;
+&nbsp;
+
+
 ### 宣言を省略した記述方法
 
 ```
-int[] myArr = {10,20,30,15,5};
+let myArr = [100,200,300,400,500];
 ```
 
+&nbsp;
+
+#### 配列の数を調べる
+
+`length`
+
+
+
+```
+print(myArr.length);
+
+```
 
 &nbsp;
 &nbsp;
 
-
-**length**
-
-配列の数を調べる
+## 配列とforを組み合わせる
 
 ```
-myArr.length
+const circleDia =[10,20,30,40,50,60];
+function setup() {
+  createCanvas(600, 400);
+  background(220);
+  noStroke();
+  fill(0,255,255);
+  
+  for(let i=0; i<circleDia.length; i+=1){
+    circle(i*100, height/2, circleDia[i]);
+  }
+}
+
+function draw() { }
 ```
+
+![](img/array02.png)
 
 
 &nbsp;
@@ -56,117 +115,114 @@ myArr.length
 
 ### 降水量を元にグラフを作成する
 
-```
-// 東京都　2016年（月ごとの合計）降水量(mm)配列
-float[] tokyoRainfall = {77.5,70.5,117.0,119.5,119.5,160.5,134.0,458.0,274.5,73.0,129.5,84.0};
+[気象庁:過去の気象データ](https://www.data.jma.go.jp/obd/stats/etrn/view/monthly_s3.php?prec_no=44&block_no=47662&year=&month=&day=&view=p5)
 
-void setup(){
-  size(500,500);
-  background(255);
+```
+// 東京都　2020年（月ごとの合計）降水量(mm)配列
+let tokyo_rainfall = [135.0,15.0,131.0,296.5,118.0,212.5,270.5,61.5,117.5,205.0,14.5,13.0];
+
+function setup() {
+  createCanvas(720, 400);
+  background(220);
   colorMode(HSB, 360, 100, 100);
-  
-  for(int i=0; i < tokyoRainfall.length; i+=1){
+  for (let i = 0; i < tokyo_rainfall.length; i += 1) {
     strokeWeight(10);
     strokeCap(SQUARE);
-    stroke(i*10,100,100);    
-    line(i * 40 + 20, 500, i * 40 + 20, 500 - tokyoRainfall[i]);
+    stroke(i * 10, 100, 100);
+    line(i * 40 + 20, height, i * 40 + 20, height - tokyo_rainfall[i]);
   }
 }
+
+function draw() {}
 ```
-![image](img/sketch_arr04.png)
+![image](img/array03.png)
 
 
 ```
-// 東京都　2016年（月ごとの合計）降水量(mm)配列
-float[] tokyoRainfall = {77.5,70.5,117.0,119.5,119.5,160.5,134.0,458.0,274.5,73.0,129.5,84.0};
+// 東京都　2020年（月ごとの合計）降水量(mm)配列
+let tokyo_rainfall = [135.0,15.0,131.0,296.5,118.0,212.5,270.5,61.5,117.5,205.0,14.5,13.0];
 
-void setup(){
-  size(500,500);
-  background(255);
+function setup() {
+  createCanvas(720, 720);
+  background(220);
   colorMode(HSB, 360, 100, 100);
-  
-  // 座標を画面の真ん中基点にする
   translate(width/2, height/2);
-
-  for(int i=0; i < tokyoRainfall.length; i+=1){
-    strokeWeight(1);
-    stroke(i*10,100,100);
-
-    // 半径
-    float radius = map(tokyoRainfall[i],0,600,0,300);
-
-    // 角度をラジアンに変える
-    float angle = radians(i * 30);
-    float x = radius * cos(angle);
-    float y = radius * sin(angle);
-    line(0,0,x,y);
+  for (let i = 0; i < tokyo_rainfall.length; i += 1) {
+    strokeWeight(2);
+    strokeCap(SQUARE);
+    
+    let radius = tokyo_rainfall[i];
+    let x = radius * cos(radians(i*30));
+    let y = radius * sin(radians(i*30));
+    stroke(i * 10, 100, 100);
+    line(0, 0, x, y);
   }
 }
 
+function draw() {}
+
 ```
 
-![image](img/sketch_arr01.png)
+![image](img/array04.png)
 
+&nbsp;
 &nbsp;
 
 ### カラフルな円が動き回る
 
 ```
-int NUM = 200; // 円の個数
-// 座標の配列
-float[] posX = new float[NUM];
-float[] posY = new float[NUM];
-// スピードの配列
-float[] speedX = new float[NUM];
-float[] speedY = new float[NUM];
-// 色の配列
-color[] col = new color[NUM];
-// 直径の配列
-float[] diameter = new float[NUM];
+let x = [];
+let y = [];
+let speedX = [];
+let speedY = [];
+const NUM = 200;
+let diameter = [];
+let hue = [];
 
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(0);
+  noStroke();
+  colorMode(HSB, 360, 100, 100, 100);
 
-void setup() {
-    size(500, 500);
-    noStroke();
-    // 配列の初期値
-    for(int i=0; i<NUM; i++){
-        posX[i] = random(8,width);
-        posY[i] = random(8,height);
-        speedX[i] = random(-4,4);
-        speedY[i] = random(-4,4);
-        col[i] = color(random(255),random(255),random(255),192);
-        diameter[i] = random(8,40);
-    }
+  for (let i = 0; i < NUM; i++) {
+    x[i] = width / 2;
+    y[i] = height / 2;
+    speedX[i] = random(-4, 4);
+    speedY[i] = random(-4, 4);
+    diameter[i] = random(8, 60);
+    hue[i] = int(random(200, 300));
+  }
 }
 
+function draw() {
+  background(0);
 
-void draw() {
-    background(0);
+  for (let i = 0; i < NUM; i++) {
+    fill(hue[i], 100, 100, 80);
+    circle(x[i], y[i], diameter[i]);
+    x[i] += speedX[i];
+    y[i] += speedY[i];
 
-    for(int i=0; i<NUM; i++){
-        noStroke();
-        fill(col[i]);
-        ellipse(posX[i], posY[i], diameter[i], diameter[i]);
-        
-        // XY座標の移動
-        posX[i] = posX[i] + speedX[i];
-        posY[i] = posY[i] + speedY[i];
-
-		 // 跳ね返り
-        if(posX[i] < 0 || posX[i] > width){
-            speedX[i] = speedX[i] * -1;
-        }
-        if(posY[i] < 0 || posY[i] > height){
-            speedY[i] = speedY[i]* -1;
-        }
+    if (x[i] > width) {
+      speedX[i] *= -1;
     }
+    if (x[i] < 0) {
+      speedX[i] *= -1;
+    }
+    if (y[i] > height) {
+      speedY[i] *= -1;
+    }
+    if (y[i] < 0) {
+      speedY[i] *= -1;
+    }
+  }
 }
 ```
 
 
-![image](img/sketch_arr02.png)
+![image](img/array05.png)
 
 &nbsp;
-
 &nbsp;
 &nbsp;
