@@ -22,25 +22,19 @@
 
 
 ```
-import processing.sound.*;
+let osc; //サイン波
+let freq; // 周波数
 
-SinOsc osc; //サイン波
-float freq; // 周波数
-
-void setup() {
-  size(512, 512);
-  background(255);
-  
-  osc = new SinOsc(this);
-  osc.play();
-  
+function setup() {
+  createCanvas(512, 512);
   freq = 440;
+  osc = new p5.Oscillator("sine");
+  osc.start();
 
 }
 
-void draw() {
-  background(0);
-   
+function draw() {
+  background(220);
   osc.freq(freq);
 }
 
@@ -64,33 +58,30 @@ void draw() {
 
 ```
 
-import processing.sound.*;
+let osc;
+let freq;
+let noteNumber;
+function setup() {
+  createCanvas(400, 400);
+  freq = 440;
+  osc = new p5.Oscillator("sine");
+  osc.start();
+  osc.amp(0.5);
 
-SinOsc osc; //サイン波
-float freq; // 周波数
-int noteNumber; // 音階
-
-
-
-void setup() {
-  size(512, 512);
-  background(255);
-  
-  osc = new SinOsc(this);
-  osc.play();
-  
-  noteNumber = 74;
-
+  noteNumber = 48;
 }
 
-void draw() {
-  background(0);
+function draw() {
+  background(220);
+
+  noteNumber = map(mouseY, 0, height, 48, 83);
+
   osc.freq(midiToFreq(noteNumber));
 }
 
 // ノートナンバーから周波数に変換する関数
-float midiToFreq(int note){
-  float freqVal = (pow(2, ((note-69)/12.0)))*440;
+function midiToFreq(note) {
+  let freqVal = pow(2, (note - 69) / 12.0) * 440;
   return freqVal;
 }
 

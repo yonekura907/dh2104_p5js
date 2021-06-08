@@ -19,11 +19,9 @@
 * [配列](docs/13_array.md)
 * [3D](docs/16_3D.md)
 * [画像](docs/14_image.md)
-
-<!--
 * [イージング](docs/15_easing.md)
 * [シンセサイザー](docs/19_synthesizer.md)
--->
+
 
 &nbsp;
 &nbsp;
